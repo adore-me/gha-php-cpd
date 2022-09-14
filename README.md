@@ -22,6 +22,6 @@ You can run [docker/login-action@v1](https://github.com/docker/login-action) bef
 
 ```yaml
 steps:
-  - name: 'Run Checkstyle'
+  - name: 'Run CPD'
     uses: adore-me/gha-php-cpd@master
 ```
