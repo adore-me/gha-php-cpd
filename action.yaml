@@ -1,0 +1,29 @@
+name: 'AdoreMe Tech PHP CPD Composite Action'
+description: 'Run PHP CPD'
+inputs:
+  php-image:
+    description: 'The PHP image to use'
+    required: true
+  report-path:
+    description: 'PHP CPD report path'
+    required: true
+    default: './build/reports/php-cpd.xml'
+runs:
+  using: "composite"
+  steps:
+    - name: 'Run PHP CPD'
+      run: $GITHUB_ACTION_PATH/check.sh
+      shell: bash
+      env:
+        INPUT_PHP_IMAGE: ${{ inputs.php-image }}
+        INPUT_PHPMD_REPORT_PATH: ${{ inputs.report-path }}
+    - name: 'Run PHP CPD Report'
+      uses: adore-me/pcpd-github-action@master
+      with:
+        name: 'PHP CPD'
+        title: 'PHP CPD report'
+        path: ${{ inputs.report-path }}
+    - name: 'TODO: Notify in PR'
+      run: |
+        echo 'PHP CPD Complete'
+      shell: bash
