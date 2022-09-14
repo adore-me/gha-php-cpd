@@ -4,10 +4,10 @@
 Run PHP copy/paste detector with custom PHP image.
 
 ## Inputs
-| Key                   | Required | Default                                            | Description                                                |
-|-----------------------|----------|----------------------------------------------------|------------------------------------------------------------|
-| **php-image**         | **true** | `''`                                               | PHP image tag to use                                       |
-| **report-path**       | **true** | `./build/reports/php-checkstyle.xml`               | Report file path (where checkstyle results will be saved). |
+| Key                   | Required | Default                       | Description                                                         |
+|-----------------------|----------|-------------------------------|---------------------------------------------------------------------|
+| **php-image**         | **true** | `''`                          | PHP image tag to use                                                |
+| **report-path**       | **true** | `./build/reports/php-cpd.xml` | Report file path (where copy/paste detector results will be saved). |
 
 ## Outputs
 **N/A**
