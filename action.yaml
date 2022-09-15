@@ -4,10 +4,14 @@ inputs:
   php-image:
     description: 'The PHP image to use'
     required: true
-  report-path:
-    description: 'PHP CPD report path'
+  report-dir:
+    description: 'PHP CPD report directory'
     required: true
-    default: './build/reports/php-cpd.xml'
+    default: 'build/reports'
+  report-file-name:
+    description: 'PHP CPD report file name'
+    required: true
+    default: 'php-cpd.xml'
 runs:
   using: "composite"
   steps:
@@ -16,14 +20,10 @@ runs:
       shell: bash
       env:
         INPUT_PHP_IMAGE: ${{ inputs.php-image }}
-        INPUT_PHPMD_REPORT_PATH: ${{ inputs.report-path }}
+        INPUT_PHPMD_REPORT_PATH: '${{ inputs.report-dir }}/${{ inputs.report-file-name }}'
     - name: 'Run PHP CPD Report'
       uses: adore-me/pcpd-github-action@master
       with:
         name: 'PHP CPD'
         title: 'PHP CPD report'
-        path: ${{ inputs.report-path }}
-    - name: 'TODO: Notify in PR'
-      run: |
-        echo 'PHP CPD Complete'
-      shell: bash
+        path: '${{ inputs.report-dir }}/${{ inputs.report-file-name }}'
