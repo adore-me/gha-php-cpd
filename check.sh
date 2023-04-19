@@ -13,6 +13,8 @@ if [ -z "$INPUT_PHP_IMAGE" ]; then
 fi
 
 echo -e "${BL}Info:${NC} Running PHP CPD with image: ${GR}$INPUT_PHP_IMAGE${NC}"
+echo -e "${BL}Info:${NC} Checkstyle report path: ${GR}$INPUT_PHPMD_REPORT_PATH${NC}"
+echo -e "${BL}Info:${NC} Running command: ${GR}./vendor/bin/phpcpd --log-pmd ${INPUT_PHPMD_REPORT_PATH} app/ || true${NC}"
 docker run \
   --platform linux/amd64 \
   -v "$PWD":/var/www \
